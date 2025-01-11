@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "d08d29c7-d9a8-4938-a97e-07310ec1a3cf",
+		"name": "API Chaining",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "11169004"
+	},
+	"item": [
+		{
+			"name": "Create empdata",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var JSONresponse= JSON.parse(responseBody);\r",
+							"pm.environment.set(\"id\",JSONresponse.id);\r",
+							"\r",
+							"//assertion\r",
+							"pm.test(\"test code is 201\", function(){\r",
+							"pm.response.to.have.status(201)\r",
+							"}\r",
+							");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"{{name}}\",\r\n\"status\": \"{{status}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/employees"
+			},
+			"response": []
+		},
+		{
+			"name": "GetEmpdata",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Check if the response has a specific 201 or OK status codes\r",
+							"pm.test(\"Verify status code is 200\", function(){\r",
+							"       pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/employees/{{id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateEMP",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Check if the response has a specific 201 or OK status codes\r",
+							"pm.test(\"Verify status code is 200\", function(){\r",
+							"       pm.response.to.have.status(200)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"FALSE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/employees/{{id}}"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteEMP",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Check if the response has a specific 201 or OK status codes\r",
+							"pm.test(\"Verify status code is 200\", function(){\r",
+							"       pm.response.to.have.status(200)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/employees/{{d}}"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "a2a46684-fbeb-4413-9e12-eb15d5976a0b",
+		"name": "OwnAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "11169004"
+	},
+	"item": [
+		{
+			"name": "Get Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Check if the response has a specific status code\r",
+							"pm.test(\"Verify status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//Check if the response has a specific status code\r",
+							"pm.test(\"Verify status code is OK\", function(){\r",
+							"    pm.response.to.have.status(\"OK\");\r",
+							"});\r",
+							"\r",
+							"//Check if the response has a specific status codes\r",
+							"pm.test(\"Verify status code is 200, 201 or OK\", function(){\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201,\"OK\"]);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:3000/employees/"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"id\": \"5\",\r\n    \"name\": \"Rad\",\r\n    \"status\": false\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/employees"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Check if the response has a specific status code\r",
+							"pm.test(\"Verify status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"id\": \"5\",\r\n    \"name\": \"Rad kris\",\r\n    \"status\": true\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:3000/employees/5"
+			},
+			"response": []
+		}
+	]
+}

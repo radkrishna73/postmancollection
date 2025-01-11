@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "98716ae2-8ed9-4866-b485-178d611ca07b",
+		"name": "authentication and authorization",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "11169004"
+	},
+	"item": [
+		{
+			"name": "BasicAuth",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "admin",
+						"username": "admin"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://the-internet.herokuapp.com/basic_auth"
+			},
+			"response": []
+		},
+		{
+			"name": "DigestAuth",
+			"request": {
+				"auth": {
+					"type": "digest",
+					"digest": {
+						"password": "admin",
+						"username": "admin",
+						"algorithm": "MD5"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://the-internet.herokuapp.com/digest_auth"
+			},
+			"response": []
+		}
+	]
+}
